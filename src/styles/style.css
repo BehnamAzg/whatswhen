@@ -25,7 +25,7 @@
 @theme {
   --font-albert: "Albert Sans", sans-serif;
   --color-primary: #694CF1;
-  --color-yellow: #FDC742;
+  --color-my-yellow: #FDC742;
 }
 
 @utility flex-center {
