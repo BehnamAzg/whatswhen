@@ -9,12 +9,12 @@
     <script defer src="src/controllers/controller.js"></script>
   </head>
 
-  <body class="bg-neutral-200 h-screen w-screen flex-center min-h-0">
+  <body class="bg-light h-screen w-screen flex-center min-h-0">
     <div class="w-[30%] h-full min-h-0 flex flex-col px-4 font-albert font-bold max-sm:w-full max-md:w-1/2 max-lg:w-1/2">
 
       <header class="min-h-0 w-full flex flex-col select-none">
         <!-- 1st row -->
-        <div class="flex-center justify-between py-2">
+        <div class="flex-center justify-between py-2 max-sm:hidden">
           <time id="clock" class="text-sm leading-0"></time>
           <span class="flex-center">
             <svg width="18" height="18" fill="currentColor">
@@ -26,23 +26,22 @@
             <svg width="18" height="18" fill="currentColor">
               <use href="/src/assets/icons/icons.svg#icon-battery-full"></use>
             </svg>
-            
           </span>
         </div>
         <!-- 2nd row -->
-        <div class="flex-center justify-between py-2">
+        <div class="flex-center justify-between py-2 max-sm:mt-8">
           <!-- menu -->
-          <button class="rounded-full bg-white p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
+          <button id="openMenu" class="rounded-full bg-white p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
             <svg width="20" height="20" fill="currentColor">
               <use href="/src/assets/icons/icons.svg#icon-list"></use>
             </svg>
           </button>
           <!-- date -->
           <div class="grid grid-cols-3 gap-0.5">
-            <span class="flex justify-end items-end pb-0.5">Wed</span><span class="text-4xl mx-2 flex-center items-end">28</span><span class="flex justify-start items-end pb-0.5">Jun</span>
+            <span id="day" class="flex justify-end items-end pb-0.5"></span><span id="date" class="text-4xl mx-2 flex-center items-end"></span><span id="month" class="flex justify-start items-end pb-0.5"></span>
           </div>
           <!-- calendar -->
-          <button class="rounded-full bg-white p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
+          <button id="openCalendar" class="rounded-full bg-white p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200">
             <svg width="20" height="20" fill="currentColor">
               <use href="/src/assets/icons/icons.svg#icon-calendar"></use>
             </svg>
@@ -51,56 +50,86 @@
         <!-- 3rd row -->
         <div class="flex-center justify-between py-2">
           <!-- tasks -->
-          <span class="bg-white rounded-full h-full flex-center w-18">
-            <span class="text-xl">3</span><span class="text-xs text-primary pt-1">/99</span>
+          <span class="bg-white rounded-full h-full flex-center w-20">
+            <span id="completedTasks" class="text-xl">3</span><span id="totalTasks" class="text-xs text-primary pt-1">/99</span>
           </span>
           <!-- date & btns -->
           <span class="bg-primary rounded-full text-white flex-center justify-between gap-x-3 p-1 ">
-            <button class="cursor-pointer rounded-full hover:bg-white/25 hover:mr-1 p-2 transition-all duration-200">
+            <button id="prevDay" class="cursor-pointer rounded-full hover:bg-white/25 hover:mr-1 p-2 transition-all duration-200">
               <svg width="16" height="16" fill="currentColor">
                 <use href="/src/assets/icons/icons.svg#icon-caret-left"></use>
               </svg>
             </button>
             <span>Today</span>
-            <button class="cursor-pointer rounded-full hover:bg-white/25 hover:ml-1 p-2 transition-all duration-200">
+            <button id="nextDay" class="cursor-pointer rounded-full hover:bg-white/25 hover:ml-1 p-2 transition-all duration-200">
               <svg width="16" height="16" fill="currentColor">
                 <use href="/src/assets/icons/icons.svg#icon-caret-right"></use>
               </svg>
             </button>
           </span>
           <!-- progress -->
-          <span class="bg-white rounded-full h-full flex-center w-18">
-            <span class="text-xl">56</span><span class="text-xs text-primary pt-1">%</span>
+          <span class="bg-white rounded-full h-full flex-center w-20">
+            <span id="percentDay" class="text-xl">56</span><span class="text-xs text-primary pt-1">%</span>
           </span>
         </div>
       </header>
   
-      <main class="bg-neutral-100 w-full flex-1 min-h-0 mt-4">
-        <section class="card-carousel relative flex-center flex-col w-full overflow-y-scroll h-full py-[25vh] snap-y snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-2 perspective-[1000px]">
-            <article class="card bg-amber-100 w-full h-[50vh] rounded-3xl flex-center transform-3d flex-none snap-center">
-              card 1
+      <main class="w-full flex-1 min-h-0 mt-4">
+        <section id="cardsContainer" class="card-container relative flex-center flex-col w-full h-full overflow-hidden" style="perspective:1000px;">
+            <article data-time="1765544765381" class="card bg-neutral-800 flex-center items-start card-element">
+              <div class="w-full h-[14.5%]  max-sm:h-[13.5%] rounded-t-3xl flex-center py-2 px-4 justify-between">
+                <span class="bg-white/30 rounded-full h-[6vh] aspect-square flex-center text-[3vh]">🌞</span>
+                <div class="flex flex-col justify-center h-fit">
+                  <h1 class="text-lg w-52 truncate text-white">This is a long form title that will</h1>
+                  <time class="text-sm text-white/50">09:30 AM</time>
+                </div>
+                <span class="rounded-full h-[6vh] aspect-square flex-center text-[5vh] text-white/30">01</span>
+              </div>
             </article>
-            <article class="card bg-my-yellow w-full h-[50vh] rounded-3xl flex-center transform-3d flex-none snap-center">
-              card 2
+            <article data-time="1765544765382" class="card bg-my-yellow flex-center items-start card-element">
+              <div class="w-full h-[14.5%]  max-sm:h-[13.5%] rounded-t-3xl flex-center py-2 px-4 justify-between">
+                <span class="bg-white/30 rounded-full h-[6vh] aspect-square flex-center text-[3vh]">🌞</span>
+                <div class="flex flex-col justify-center h-fit">
+                  <h1 class="text-lg w-52 truncate text-black">This is a long form title that will</h1>
+                  <time class="text-sm text-black/50">09:30 AM</time>
+                </div>
+                <span class="rounded-full h-[6vh] aspect-square flex-center text-[5vh] text-white/30">02</span>
+              </div>
             </article>
-            <article class="card bg-amber-200 w-full h-[50vh] rounded-3xl flex-center transform-3d flex-none snap-center">
-              card 3
+            <article data-time="1765544765383" class="card bg-my-yellow  flex-center items-start card-element">
+              <div class="w-full h-[14.5%]  max-sm:h-[13.5%] rounded-t-3xl flex-center py-2 px-4 justify-between">
+                <span class="bg-white/30 rounded-full h-[6vh] aspect-square flex-center text-[3vh]">🌞</span>
+                <div class="flex flex-col justify-center h-fit">
+                  <h1 class="text-lg w-52 truncate text-white">This is a long form title that will</h1>
+                  <time class="text-sm text-white/50">09:30 AM</time>
+                </div>
+                <span class="rounded-full h-[6vh] aspect-square flex-center text-[5vh] text-white/30">03</span>
+              </div>
             </article>
-            <article class="card bg-amber-300 w-full h-[50vh] rounded-3xl flex-center transform-3d flex-none snap-center">
+            <article data-time="1765544765383" class="card bg-neutral-100 flex-center items-start card-element">
               card 4
             </article>
-            <article class="card bg-amber-400 w-full h-[50vh] rounded-3xl flex-center transform-3d flex-none snap-center">
+            <article data-time="1765544765383" class="card bg-neutral-300 flex-center items-start card-element">
               card 5
             </article>
         </section>
       </main>
 
-      <footer class=" w-full min-h-0 flex justify-end items-center select-none py-3 ">
-        <button class="rounded-full bg-primary p-2.5 text-white cursor-pointer hover:bg-white hover:text-primary min-h-0 transition-all duration-200">
+      <footer class=" w-full min-h-0 flex justify-between items-center select-none py-3 ">
+        <!-- go to current btn -->
+        <button id="goTOCurrent" class="rounded-full bg-primary py-2.5 px-4 text-white cursor-pointer hover:bg-violet-600 hover:px-5 min-h-0 transition-all duration-200 flex-center justify-between gap-x-1">
+          <span class="text-sm">Current Task</span>
+          <svg width="14" height="14" fill="currentColor">
+            <use href="/src/assets/icons/icons.svg#icon-caret-right"></use>
+          </svg>
+        </button>
+        <!-- add task btn -->
+        <button id="addTask" class="rounded-full bg-primary p-2.5 text-white cursor-pointer hover:bg-violet-600 hover:scale-95 min-h-0 transition-all duration-200">
           <svg width="20" height="20" fill="currentColor">
             <use href="/src/assets/icons/icons.svg#icon-plus"></use>
           </svg>
         </button>
+        
       </footer>
 
     </div>
