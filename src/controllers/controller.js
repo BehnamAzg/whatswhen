@@ -54,7 +54,6 @@ function setupCards() {
   if (activeCard < cards.length - 1) {
     const next = cards[activeCard + 1];
     next.style.top = "86%";
-    
   }
 }
 
@@ -114,6 +113,8 @@ const cardsData = [
     icon: "🌞",
     titel: "Test titel",
     index: "01",
-    tag: "Morning Routine"
+    tag: "Morning Routine",
+    description: "",
+    
   }
 ]

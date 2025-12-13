@@ -35,5 +35,5 @@
 }
 
 @utility card-element {
-  @apply w-full h-[82%] max-sm:h-[82%] rounded-3xl flex-none absolute transition-all duration-300;
+  @apply w-full h-[82%] rounded-3xl flex-none absolute transition-all duration-300;
 }
