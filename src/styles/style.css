@@ -7,14 +7,12 @@
   font-weight: 500;
   font-style: normal;
 }
-
 .albert-sans-semibold {
   font-family: "Albert Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
-
 .albert-sans-bold {
   font-family: "Albert Sans", sans-serif;
   font-optical-sizing: auto;
@@ -22,18 +20,65 @@
   font-style: normal;
 }
 
-
 @theme {
   --font-albert: "Albert Sans", sans-serif;
   --color-primary: #694cf1;
   --color-my-yellow: #fdc742;
   --color-light: theme(colors.neutral.200);
 }
-
 @utility flex-center {
   @apply flex justify-center items-center;
 }
-
 @utility card-element {
   @apply w-full h-[82%] rounded-3xl flex-none absolute transition-all duration-300;
+}
+@utility bg-blur {
+  @apply bg-white/50 backdrop-blur-md border border-white/40;
+}
+.color-dot {
+  @apply flex w-6 h-6 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2;
+}
+.day-select {
+  @apply bg-white rounded-xl px-2 py-1 flex-center peer-checked:bg-primary peer-checked:text-white peer-checked:border-transparent peer-checked:hover:bg-white/10 peer-checked:hover:text-black ring-primary hover:ring-2 peer-checked:hover:ring-0;
+}
+.round-btn {
+  @apply rounded-full bg-blur p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200;
+}
+.round-btn-primary {
+  @apply rounded-full bg-primary p-1.5 text-white cursor-pointer hover:bg-violet-600 hover:scale-95 min-h-0 transition-all duration-200 absolute top-3 right-3;
+}
+.focus-primary {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary;
+}
+
+.icon-list {
+  @apply w-9 h-9 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2 focus:outline-none flex-center bg-white;
+}
+
+.todo-list {
+  @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white  flex flex-col py-2;
+}
+
+.pomodoro-timer {
+  @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex flex-col p-2 gap-2;
+}
+
+@layer components {
+  dialog.enter-scale {
+    @apply opacity-100 scale-100 translate-y-0 transition-all duration-200;
+  }
+  @starting-style {
+    dialog.enter-scale {
+      @apply opacity-0 scale-0 translate-y-full;
+    }
+  }
+
+  dialog::backdrop {
+    @apply opacity-100 transition-all duration-200;
+  }
+  @starting-style {
+    dialog::backdrop {
+      @apply opacity-0;
+    }
+  }
 }
