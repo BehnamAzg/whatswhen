@@ -1,0 +1,7 @@
+---
+const { type, text, action, classList = []} = Astro.props;
+---
+
+<button type={type} class="circle-btn h-8 w-fit px-4 hover:px-5 backdrop-blur-none text-sm hover:ring-0" class:list={classList} data-action={action}>
+  <span>{text}</span>
+</button>

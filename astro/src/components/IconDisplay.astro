@@ -1,0 +1,7 @@
+---
+const {svgIcon, svgSize} = Astro.props;
+---
+
+<svg width={svgSize} height={svgSize} fill="currentColor">
+  <use href={`/icons.svg#icon-${svgIcon}`}></use>
+</svg>

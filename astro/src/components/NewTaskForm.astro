@@ -1,0 +1,113 @@
+---
+import CapsuleBtn from "./CapsuleBtn.astro";
+import CapsuleBtnText from "./CapsuleBtnText.astro";
+import CircleBtn from "./CircleBtn.astro";
+import ColorLabel from "./ColorLabel.astro";
+import IconDisplay from "./IconDisplay.astro";
+import Input from "./Input.astro";
+import RepeatLabel from "./RepeatLabel.astro";
+---
+
+<form action="" id="createTaskForm" class="font-medium my-2 flex flex-col gap-3 focus:outline-none rounded-2xl" tabindex="-1">
+
+  <div class="w-full flex gap-2 items-stretch relative">
+    <!-- icon -->
+    <CircleBtn svgIcon="smiley" svgSize="22" classList={["text-xl", "text-neutral-500", "backdrop-blur-none"]} action="" />
+    <!-- title -->
+     <Input name="title" type="text" placeholder="Title" isRequired={true} />
+  </div>
+
+  <div class="w-full flex gap-2 items-stretch">
+    <!-- time -->
+     <Input name="startTime" type="time" isRequired={true} classList={["w-1/2"]} />
+    <!-- reminder -->
+    <div class="flex-center rounded-full h-10 px-4 bg-white/50 border border-white w-1/2 gap-2">
+      <h3 class="flex-center text-sm text-neutral-500">Notification</h3>
+      <label class="relative inline-flex items-center cursor-pointer rounded-full ring-primary hover:ring-2 focus-within:ring-2 focus-within:ring-primary">
+        <input type="checkbox" name="reminder" value="on" class="sr-only peer" />
+        <div class="w-8 h-4 bg-gray-300 rounded-full peer-checked:bg-primary transition-colors"></div>
+        <div class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full transform peer-checked:translate-x-4 transition-transform"></div>
+      </label>
+    </div>
+  </div>
+
+  <div class="w-full flex gap-2 items-stretch">
+    <!-- tag -->
+     <Input name="tag" type="text" placeholder="Tag" />
+  </div>
+
+  <!-- Repeat -->
+  <div class="w-full flex flex-wrap gap-2 items-stretch text-xs px-4 py-2.5 bg-white/50 border border-white rounded-2xl select-none text-neutral-500">
+    <h3 class="flex-center text-sm text-neutral-500 mr-1">Repeat</h3>
+    <RepeatLabel text="Once" role="once" isChecked={true} />
+    <RepeatLabel text="Every Day" role="everyday" />
+    <RepeatLabel text="Mon" role="day" value="mon" />
+    <RepeatLabel text="Tue" role="day" value="tue" />
+    <RepeatLabel text="Wed" role="day" value="wed" />
+    <RepeatLabel text="Thu" role="day" value="thu" />
+    <RepeatLabel text="Fri" role="day" value="fri" />
+    <RepeatLabel text="Sat" role="day" value="sat" />
+    <RepeatLabel text="Sun" role="day" value="sun" />
+  </div>
+
+  <!-- colors -->
+  <div id="colorPicker" class="flex-center justify-between gap-2 rounded-full h-10 px-4 bg-white/50 border border-white flex-none">
+
+    <ColorLabel value="bg-red-300/40" classList={["bg-red-300/50"]} />
+    <ColorLabel value="bg-orange-300/40" classList={["bg-orange-300/50"]} />
+    <ColorLabel value="bg-amber-300/40" classList={["bg-amber-300/50"]} isChecked={true} />
+    <ColorLabel value="bg-emerald-300/40" classList={["bg-emerald-300/50"]} />
+    <ColorLabel value="bg-blue-300/40" classList={["bg-blue-300/50"]} />
+    <ColorLabel value="bg-fuchsia-300/40" classList={["bg-fuchsia-300/50"]} />
+    <ColorLabel value="bg-pink-300/40" classList={["bg-pink-300/50"]} />
+
+
+    <!-- Custom color picker -->
+    <label class="focus-within:ring-2 focus-within:ring-primary rounded-full">
+      <input id="customColor" type="color" class="sr-only peer" value="#694cf1" />
+      <span id="customDot" class="color-dot bg-primary text-white flex items-center justify-center focus:outline-none" tabindex="0">
+        <IconDisplay svgIcon="plus" svgSize="14" />
+      </span>
+    </label>
+  </div>
+  
+  <!-- description -->
+  <div class="w-full flex gap-2 items-stretch">
+    <textarea name="description" rows="2" placeholder="Description" class="form-inout rounded-2xl py-2.5 h-auto"></textarea>
+  </div>
+
+  <!-- add todo / pomodoro btn -->
+  <div class="w-full flex gap-2 items-stretch text-xs">
+    <CapsuleBtn svgIcon="todo" svgSize="16" text="Add To-do Item" classList={[" w-full"]} action="" />
+    <CapsuleBtn svgIcon="timer" svgSize="16" text="Pomodoro Timer" classList={[" w-full"]} action="" />
+  </div>
+
+  <!-- todo list -->
+  <ul id="todoList" class="focus-primary hidden"></ul>
+
+  <!-- pomodoro timer -->
+  <div id="pomodoroTimer" class="focus-primary w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex-col p-2 gap-2 text-neutral-800 hidden">
+    <div class="flex-center w-full gap-2 text-base font-bold">
+      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+    </div>
+    <div class="flex-center w-full gap-2 text-base font-bold">
+      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+    </div>
+    <div class="flex-center w-full gap-2 text-base font-bold">
+      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+    </div>
+    <div class="flex-center w-full gap-2 text-base font-bold">
+      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+      <input type="text" value="15:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
+    </div>
+  </div>
+
+  <!-- canccel / add task -->
+  <div class="w-full flex justify-end gap-2 mt-2">
+    <CapsuleBtnText type="bottom" text="Cancel" action="" />
+    <CapsuleBtnText type="submit" text="Add Task" classList={["bg-primary", "text-white"]} action="" />
+  </div>
+</form>

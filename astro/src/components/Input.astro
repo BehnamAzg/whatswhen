@@ -1,0 +1,10 @@
+---
+const { name, type, placeholder, isRequired = false, classList = [] } = Astro.props;
+---
+
+<input 
+  class="form-inout" class:list={classList}
+  name={name}
+  type={type} placeholder={placeholder}
+  required={isRequired}
+/>

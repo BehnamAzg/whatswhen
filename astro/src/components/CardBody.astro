@@ -1,0 +1,21 @@
+---
+import IconDisplay from "./IconDisplay.astro";
+---
+
+<ul class="w-full h-full px-4 py-2.5 min-h-0 rounded-2xl bg-white/20 my-4 overflow-y-auto font-medium">
+  <li class="mb-2">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </li>
+
+  <li class="mb-2">
+    <label class="cursor-pointer inline-flex gap-2 items-start">
+      <input type="checkbox" class="hidden peer" checked />
+      <span class="todo-checkbox-large">
+        <IconDisplay svgIcon="check-todo" svgSize="12" />
+      </span>
+      <span class="todo-text"> Already completed task Already completed task Already completed task</span>
+    </label>
+  </li>
+</ul>

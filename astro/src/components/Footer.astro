@@ -1,0 +1,9 @@
+---
+import CapsuleBtn from "./CapsuleBtn.astro";
+import CircleBtn from "./CircleBtn.astro";
+---
+
+<footer class="w-full min-h-0 flex-center justify-between select-none py-2">
+  <CapsuleBtn svgIcon="caret-right" svgSize="14" text="Current Task" classList={["backdrop-blur-md", "text-sm", "flex-row-reverse", "w-fit", "hover:px-5"]} />
+  <CircleBtn svgIcon="plus" svgSize="20" classList={["bg-primary", "text-white", "hover:bg-violet-600", "hover:scale-95", "hover:ring-0"]} action="openNewTask" />
+</footer>

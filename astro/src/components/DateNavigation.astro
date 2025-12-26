@@ -1,0 +1,15 @@
+---
+import IconDisplay from "./IconDisplay.astro";
+---
+
+<span class="circle-btn w-auto text-white bg-primary justify-between gap-x-3 p-1 ring-0 cursor-auto">
+  <button id="prevDay" type="button" class="date-navigation-btn hover:mr-1">
+    <IconDisplay svgIcon="caret-left" svgSize="16" />
+  </button>
+
+  <span class="text-base">Today</span>
+  
+  <button id="nextDay" type="button" class="date-navigation-btn hover:ml-1">
+    <IconDisplay svgIcon="caret-right" svgSize="16" />
+  </button>
+</span>

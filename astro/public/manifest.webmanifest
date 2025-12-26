@@ -1,0 +1,50 @@
+{
+  "id": "/",
+  "name": "WhatsWhen?",
+  "short_name": "WhatsWhen?",
+  "description": "The free, minimal, daily schedule planner",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#e5e5e5",
+	"background_color": "#e5e5e5",
+  "categories": [
+    "schedule",
+    "planner",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-1.png",
+      "sizes": "???",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/screenshot-2.png",
+      "sizes": "???",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/screenshot-2.png",
+      "sizes": "???",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<div class="grid grid-cols-3 gap-0.5">
+  <span id="day" class="flex justify-end items-end pb-0.5"></span><span id="date" class="text-4xl mx-2 flex-center items-end"></span><span id="month" class="flex justify-start items-end pb-0.5"></span>
+</div>
+
+<script>
+  function updateDate() {
+  const dayEl = document.getElementById("day");
+  const dateEl = document.getElementById("date");
+  const monthEL = document.getElementById("month");
+  if (dayEl && dateEl && monthEL) {
+    const now = new Date();
+    const day = now.toLocaleDateString("en-US", { weekday: "short" });
+    const date = String(now.getDate()).padStart(2, "0");
+    const month = now.toLocaleDateString("en-US", { month: "short" });
+    dayEl.textContent = day;
+    dateEl.textContent = date;
+    monthEL.textContent = month;
+  }
+}
+updateDate();
+</script>

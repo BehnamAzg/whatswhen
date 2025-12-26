@@ -1,0 +1,15 @@
+---
+import Card from "./Card.astro";
+---
+
+<main class="w-full min-h-0 flex-1 mt-4">
+  <section id="cardsContainer" class="card-container relative flex-center flex-col w-full h-full overflow-hidden">
+    <Card />
+  </section>
+</main>
+
+<style>
+  main {
+    perspective: 1000px;
+  }
+</style>

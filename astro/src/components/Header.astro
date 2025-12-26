@@ -1,0 +1,23 @@
+---
+import CircleBtn from "./CircleBtn.astro";
+import CompletedTasksDisplay from "./CompletedTasksDisplay.astro";
+import DateDisplay from "./DateDisplay.astro";
+import DateNavigation from "./DateNavigation.astro";
+import DatePickerBtn from "./DatePickerBtn.astro";
+import ProgressionPercentDisplay from "./ProgressionPercentDisplay.astro";
+---
+
+<header class="w-full min-h-0 flex flex-col select-none">
+  <!-- 1st row -->
+  <div class="flex-center justify-between py-2">
+    <CircleBtn svgIcon="list" svgSize="20" />
+    <DateDisplay />
+    <DatePickerBtn />
+  </div>
+  <!-- 2nd row -->
+  <div class="flex-center justify-between py-2">
+    <CompletedTasksDisplay />
+    <DateNavigation />
+    <ProgressionPercentDisplay />
+  </div>
+</header>
