@@ -1,0 +1,14 @@
+---
+import IconDisplay from "./IconDisplay.astro";
+
+const { svgIcon, svgSize, text } = Astro.props;
+---
+
+<details class="rounded-3xl w-full">
+  <summary class="accordian-summary">
+    <IconDisplay svgIcon={svgIcon} svgSize={svgSize} />
+    <span>{text}</span>
+    <IconDisplay svgIcon="arrow-down" svgSize="14" classList={["ml-auto"]} />
+  </summary>
+  <slot />
+</details>

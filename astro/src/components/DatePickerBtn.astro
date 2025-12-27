@@ -1,8 +1,10 @@
 ---
 import CircleBtn from "./CircleBtn.astro";
+
+const { action } = Astro.props;
 ---
 
 <label role="button" class="rounded-full focus-primary">
   <input id="datePickerInput" type="date" class="sr-only" tabindex="-1" />
-  <CircleBtn svgIcon="calendar" svgSize="20" action="datePicker" />
+  <CircleBtn svgIcon="calendar" svgSize="20" action={action} />
 </label>

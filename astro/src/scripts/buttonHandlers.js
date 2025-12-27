@@ -4,10 +4,16 @@ const pickDate = (id) => {
   else input.focus();
 }
 
-const openNewTask = (id) => {
+const openDialog = (id) => {
   const dialog = document.getElementById(id);
   dialog.showModal()
 }
+
+const closeDialog = (btn) => {
+  const dialog = btn.closest("dialog");
+  if (dialog) dialog.close();
+}
+
 
 
 document.addEventListener("click", (e) => {
@@ -22,7 +28,13 @@ document.addEventListener("click", (e) => {
       pickDate("datePickerInput");
       break;
     case "openNewTask":
-      openNewTask("newTaskDialog");
+      openDialog("newTaskDialog");
+      break;
+    case "openMenu":
+      openDialog("menuDialog");
+      break;
+    case "closeDialog":
+      closeDialog(btn);
       break;
     default:
       console.log("No handler for this action");

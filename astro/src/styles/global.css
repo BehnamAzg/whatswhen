@@ -23,7 +23,6 @@
 @theme {
   --font-albert: "Albert Sans", sans-serif;
   --color-primary: #694cf1;
-  --color-my-yellow: #fdc742;
   --color-light: theme(colors.neutral.200);
 }
 
@@ -31,10 +30,10 @@
   @apply flex justify-center items-center;
 }
 @utility bg-blur {
-  @apply bg-white/50 backdrop-blur-md border border-white/40;
+  @apply bg-white/50 backdrop-blur-md border border-white/50;
 }
 @utility focus-primary {
-   @apply focus:outline-none ring-primary focus-visible:ring-2  focus-within:ring-2;
+  @apply focus:outline-none ring-primary focus-visible:ring-2  focus-within:ring-2;
 }
 @utility card-element {
   @apply w-full h-[82%] rounded-3xl flex-center flex-col justify-start absolute transition-all duration-300 bg-blur px-4;
@@ -62,7 +61,7 @@
     top: anchor(bottom);
     transition: display 200ms, opacity 200ms;
     transition-behavior: allow-discrete;
-    @apply bg-blur text-sm mt-2 px-4 py-2.5 rounded-2xl w-44 opacity-0; 
+    @apply bg-blur text-sm mt-2 px-4 py-2.5 rounded-2xl w-44 opacity-0;
   }
   .popover-body:popover-open {
     @apply opacity-100;
@@ -91,11 +90,33 @@
   .form-inout {
     @apply rounded-full h-10 px-4 w-full bg-white/50 border border-white focus-primary;
   }
-  .dialog-body {
-    @apply fixed inset-0 m-auto backdrop:bg-black/20 max-sm:w-full max-lg:w-[46%] w-[28%] rounded-3xl font-albert font-bold py-3 px-4 bg-white/70 backdrop-blur-md border border-white text-sm focus:outline-none;
-  }
+
   .date-navigation-btn {
     @apply cursor-pointer rounded-full hover:bg-white/25 p-2 transition-all duration-200 focus:outline-none focus-visible:bg-white/25;
+  }
+  .accordian-summary {
+    @apply rounded-full h-10 px-4 w-full bg-white/50 border border-white flex-center justify-start cursor-pointer ring-primary hover:ring-2 min-h-0 transition-colors duration-200 gap-x-2 focus-primary select-none;
+  }
+  .color-dot {
+    @apply flex w-6 h-6 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2;
+  }
+  .day-select {
+    @apply bg-white rounded-xl px-2 py-1 flex-center peer-checked:bg-primary peer-checked:text-white peer-checked:border-transparent peer-checked:hover:bg-white/10 peer-checked:hover:text-black ring-primary hover:ring-2 peer-checked:hover:ring-0;
+  }
+  .round-btn-primary {
+    @apply rounded-full bg-primary p-1.5 text-white cursor-pointer hover:bg-violet-600 hover:scale-95 min-h-0 transition-all duration-200 absolute top-3 right-3;
+  }
+  .icon-list {
+    @apply w-9 h-9 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2 focus:outline-none flex-center bg-white;
+  }
+  .todo-list {
+    @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white  flex flex-col py-2;
+  }
+  .pomodoro-timer {
+    @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex flex-col p-2 gap-2;
+  }
+  .dialog-body {
+    @apply fixed inset-0 m-auto backdrop:bg-black/20 max-sm:w-full max-lg:w-[46%] w-[28%] rounded-3xl font-albert font-bold py-3 px-4 bg-white/70 backdrop-blur-md border border-white text-sm focus:outline-none;
   }
   dialog.enter-scale {
     @apply opacity-100 scale-100 translate-y-0 transition-all duration-200;
@@ -115,28 +136,6 @@
   }
 }
 
-.color-dot {
-  @apply flex w-6 h-6 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2;
-}
-.day-select {
-  @apply bg-white rounded-xl px-2 py-1 flex-center peer-checked:bg-primary peer-checked:text-white peer-checked:border-transparent peer-checked:hover:bg-white/10 peer-checked:hover:text-black ring-primary hover:ring-2 peer-checked:hover:ring-0;
-}
 /* .round-btn {
   @apply rounded-full bg-blur p-2.5 cursor-pointer hover:bg-primary hover:text-white transition-all duration-200;
 } */
-.round-btn-primary {
-  @apply rounded-full bg-primary p-1.5 text-white cursor-pointer hover:bg-violet-600 hover:scale-95 min-h-0 transition-all duration-200 absolute top-3 right-3;
-}
-.icon-list {
-  @apply w-9 h-9 rounded-full cursor-pointer border border-white/30 peer-checked:ring-2 ring-primary ring-offset-1 hover:ring-2 focus:outline-none flex-center bg-white;
-}
-.todo-list {
-  @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white  flex flex-col py-2;
-}
-.pomodoro-timer {
-  @apply w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex flex-col p-2 gap-2;
-}
-
-
-
-

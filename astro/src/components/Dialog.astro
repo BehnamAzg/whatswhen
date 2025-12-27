@@ -1,16 +1,17 @@
 ---
 import CircleBtn from "./CircleBtn.astro";
-import NewTaskForm from "./NewTaskForm.astro";
 
 const { id, closedby, title, closeBtn = false } = Astro.props;
 ---
 
 <dialog id={id} closedby={closedby} class="dialog-body enter-scale">
-  {closeBtn && <CircleBtn svgIcon="x" svgSize="16" />}
 
-  <h1 class="rounded-full py-1 flex-center justify-start gap-2 px-3 focus:outline-none">
+  {closeBtn && <CircleBtn svgIcon="x" svgSize="16" classList={["round-btn-primary", "w-8", "h-8", "hover:ring-0"]} action="closeDialog" />}
+
+  <h1 class="rounded-full py-1 flex-center justify-start gap-2 px-3 focus:outline-none select-none">
     <span class="text-base">{title}</span>
   </h1>
 
-  <NewTaskForm />
+  <slot />
+
 </dialog>

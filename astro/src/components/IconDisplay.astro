@@ -1,7 +1,7 @@
 ---
-const {svgIcon, svgSize} = Astro.props;
+const {svgIcon, svgSize, svgColor, classList = []} = Astro.props;
 ---
 
-<svg width={svgSize} height={svgSize} fill="currentColor">
+<svg width={svgSize} height={svgSize} class:list={classList} fill="currentColor" class={svgColor}>
   <use href={`/icons.svg#icon-${svgIcon}`}></use>
 </svg>
