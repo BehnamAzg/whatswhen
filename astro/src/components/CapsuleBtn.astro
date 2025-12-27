@@ -1,10 +1,10 @@
 ---
 import IconDisplay from "./IconDisplay.astro";
 
-const {svgIcon, svgSize, svgColor, text, action, classList = []} = Astro.props;
+const {svgIcon, svgSize, svgColor, text, action, id, classList = []} = Astro.props;
 ---
 
-<button type="button" class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-800" class:list={classList} data-action={action}>
+<button type="button" id={id} class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-800" class:list={classList} data-action={action}>
   <IconDisplay svgIcon={svgIcon} svgSize={svgSize} svgColor={svgColor} />
   <span>{text}</span>
 </button>

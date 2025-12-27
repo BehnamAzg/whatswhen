@@ -1,4 +1,6 @@
 ---
+import AddPomodoroTimer from "./AddPomodoroTimer.astro";
+import AddTodo from "./AddTodo.astro";
 import CapsuleBtn from "./CapsuleBtn.astro";
 import CapsuleBtnText from "./CapsuleBtnText.astro";
 import CircleBtn from "./CircleBtn.astro";
@@ -9,17 +11,16 @@ import RepeatLabel from "./RepeatLabel.astro";
 ---
 
 <form action="" id="createTaskForm" class="font-medium my-2 flex flex-col gap-3 focus:outline-none rounded-2xl" tabindex="-1">
-
-  <div class="w-full flex gap-2 items-stretch relative">
+  <div class="w-full flex gap-2 items-stretch">
     <!-- icon -->
     <CircleBtn svgIcon="smiley" svgSize="22" classList={["text-xl", "text-neutral-500", "backdrop-blur-none"]} action="" />
     <!-- title -->
-     <Input name="title" type="text" placeholder="Title" isRequired={true} />
+    <Input name="title" type="text" placeholder="Title" isRequired={true} />
   </div>
 
   <div class="w-full flex gap-2 items-stretch">
     <!-- time -->
-     <Input name="startTime" type="time" isRequired={true} classList={["w-1/2"]} />
+    <Input name="startTime" type="time" isRequired={true} classList={["w-1/2"]} />
     <!-- reminder -->
     <div class="flex-center rounded-full h-10 px-4 bg-white/50 border border-white w-1/2 gap-2">
       <h3 class="flex-center text-sm text-neutral-500">Notification</h3>
@@ -33,7 +34,7 @@ import RepeatLabel from "./RepeatLabel.astro";
 
   <div class="w-full flex gap-2 items-stretch">
     <!-- tag -->
-     <Input name="tag" type="text" placeholder="Tag" />
+    <Input name="tag" type="text" placeholder="Tag" />
   </div>
 
   <!-- Repeat -->
@@ -52,7 +53,6 @@ import RepeatLabel from "./RepeatLabel.astro";
 
   <!-- colors -->
   <div id="colorPicker" class="flex-center justify-between gap-2 rounded-full h-10 px-4 bg-white/50 border border-white flex-none">
-
     <ColorLabel value="bg-red-300/40" classList={["bg-red-300/50"]} />
     <ColorLabel value="bg-orange-300/40" classList={["bg-orange-300/50"]} />
     <ColorLabel value="bg-amber-300/40" classList={["bg-amber-300/50"]} isChecked={true} />
@@ -60,7 +60,6 @@ import RepeatLabel from "./RepeatLabel.astro";
     <ColorLabel value="bg-blue-300/40" classList={["bg-blue-300/50"]} />
     <ColorLabel value="bg-fuchsia-300/40" classList={["bg-fuchsia-300/50"]} />
     <ColorLabel value="bg-pink-300/40" classList={["bg-pink-300/50"]} />
-
 
     <!-- Custom color picker -->
     <label class="focus-within:ring-2 focus-within:ring-primary rounded-full">
@@ -70,7 +69,7 @@ import RepeatLabel from "./RepeatLabel.astro";
       </span>
     </label>
   </div>
-  
+
   <!-- description -->
   <div class="w-full flex gap-2 items-stretch">
     <textarea name="description" rows="2" placeholder="Description" class="form-inout rounded-2xl py-2.5 h-auto"></textarea>
@@ -78,36 +77,161 @@ import RepeatLabel from "./RepeatLabel.astro";
 
   <!-- add todo / pomodoro btn -->
   <div class="w-full flex gap-2 items-stretch text-xs">
-    <CapsuleBtn svgIcon="todo" svgSize="16" text="Add To-do Item" classList={[" w-full"]} action="" />
-    <CapsuleBtn svgIcon="timer" svgSize="16" text="Pomodoro Timer" classList={[" w-full"]} action="" />
+    <CapsuleBtn svgIcon="todo" svgSize="16" text="Add To-do Item" classList={[" w-full"]} action="addTodo" />
+    <CapsuleBtn svgIcon="timer" svgSize="16" text="Pomodoro Timer" classList={[" w-full"]} action="addPomodoroTimer" id="addPomodoroTimerBtn" />
   </div>
 
   <!-- todo list -->
   <ul id="todoList" class="focus-primary hidden"></ul>
 
   <!-- pomodoro timer -->
-  <div id="pomodoroTimer" class="focus-primary w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex-col p-2 gap-2 text-neutral-800 hidden">
-    <div class="flex-center w-full gap-2 text-base font-bold">
-      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-    </div>
-    <div class="flex-center w-full gap-2 text-base font-bold">
-      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-    </div>
-    <div class="flex-center w-full gap-2 text-base font-bold">
-      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-      <input type="text" value="05:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-    </div>
-    <div class="flex-center w-full gap-2 text-base font-bold">
-      <input type="text" value="25:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-      <input type="text" value="15:00" inputmode="numeric" pattern="[0-9]{2}:[0-9]{2}" placeholder="MM:SS" class="bg-white/50 rounded-2xl h-10 px-4 w-1/2 focus-primary text-center" />
-    </div>
-  </div>
-
+  <AddPomodoroTimer />
+  
   <!-- canccel / add task -->
   <div class="w-full flex justify-end gap-2 mt-2">
-    <CapsuleBtnText type="bottom" text="Cancel" action="closeDialog" />
+    <CapsuleBtnText type="button" text="Cancel" action="closeDialog" />
     <CapsuleBtnText type="submit" text="Add Task" classList={["bg-primary", "text-white"]} action="" />
   </div>
 </form>
+
+<AddTodo />
+
+<script>
+  // ── Days Select State Logic ────────────────────────────────────────────────
+  const once = document.querySelector<HTMLInputElement>('[data-role="once"]');
+  const everyDay = document.querySelector<HTMLInputElement>('[data-role="everyday"]');
+  const days = Array.from(document.querySelectorAll<HTMLInputElement>('[data-role="day"]'));
+
+  function checkedDays() {
+    return days.filter((d) => d.checked);
+  }
+
+  function updateState(source: HTMLInputElement) {
+    const checked = checkedDays();
+    if (!once || !everyDay) return;
+    // ── Once clicked ─────────────────────────────────────────────────────────
+    if (source === once) {
+      if (!once.checked && checked.length === 0) {
+        // Once cannot be unchecked if nothing else is checked
+        once.checked = true;
+        return;
+      }
+
+      if (once.checked) {
+        everyDay.checked = false;
+        days.forEach((d) => (d.checked = false));
+      }
+    }
+
+    // ── Every Day clicked ────────────────────────────────────────────────────
+    if (source === everyDay) {
+      if (everyDay.checked) {
+        once.checked = false;
+        days.forEach((d) => (d.checked = true));
+      } else {
+        days.forEach((d) => (d.checked = false));
+        once.checked = true;
+      }
+    }
+
+    // ── Any day clicked ──────────────────────────────────────────────────────
+
+    if (source?.dataset.role === "day") {
+      if (checked.length > 0) {
+        once.checked = false;
+      }
+
+      if (checked.length === 0) {
+        once.checked = true;
+      }
+
+      everyDay.checked = checked.length === days.length;
+    }
+  }
+
+  const inputs = [once, everyDay, ...days].filter((el): el is HTMLInputElement => el !== null);
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => updateState(input));
+  });
+
+  // ── Colors Select State Logic ──────────────────────────────────────────────
+
+  const containerEl = document.getElementById("colorPicker");
+  const customInputEl = document.getElementById("customColor");
+  const customDotEl = document.getElementById("customDot");
+
+  if (!(containerEl instanceof HTMLElement) || !(customInputEl instanceof HTMLInputElement) || !(customDotEl instanceof HTMLElement)) {
+    throw new Error("Color picker elements not found");
+  }
+
+  const container = containerEl;
+  const customInput = customInputEl;
+  const customDot = customDotEl;
+
+  const radios = Array.from(container.querySelectorAll<HTMLInputElement>('input[type="radio"]'));
+
+  // Keyboard interaction
+  container.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+
+    e.preventDefault();
+
+    const target = e.target as HTMLElement | null;
+    const input = target?.previousElementSibling;
+
+    if (!(input instanceof HTMLInputElement)) return;
+
+    if (input.type === "color") {
+      radios.forEach((r) => (r.checked = false));
+      customDot.classList.add("ring-2", "ring-primary");
+      customDot.style.backgroundColor = input.value;
+      input.focus();
+    } else {
+      input.checked = true;
+      applyDefaultCustomColor();
+      customDot.classList.remove("ring-2", "ring-primary");
+    }
+
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+
+  // When a radio is selected → clear custom color
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      applyDefaultCustomColor();
+      customDot.classList.remove("ring-2", "ring-primary");
+    });
+  });
+
+  // Utils
+  function isLight(hex: string): boolean {
+    const parts = hex.slice(1).match(/.{2}/g);
+    if (!parts) return false;
+
+    const [r, g, b] = parts.map((x) => parseInt(x, 16));
+    return (r * 299 + g * 587 + b * 114) / 1000 > 180;
+  }
+
+  function applyDefaultCustomColor(): void {
+    const color = customInput.value;
+    customDot.style.backgroundColor = color;
+    customDot.classList.toggle("text-primary", isLight(color));
+    customDot.classList.toggle("text-white", !isLight(color));
+  }
+
+  // When custom color changes
+  customInput.addEventListener("input", () => {
+    radios.forEach((r) => (r.checked = false));
+    applyDefaultCustomColor();
+    customDot.classList.add("ring-2", "ring-primary");
+  });
+
+  // Public getter
+  function getSelectedColor(): string {
+    const checked = radios.find((r) => r.checked);
+    return checked ? checked.value : customInput.value;
+  }
+
+  
+</script>

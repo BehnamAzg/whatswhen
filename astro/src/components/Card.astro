@@ -2,11 +2,13 @@
 import CardHeader from "./CardHeader.astro";
 import CardBody from "./CardBody.astro";
 import CardFooter from "./CardFooter.astro";
+
+const { cardData = {} } = Astro.props;
 ---
 
-<article data-time="1765544765382" class="card card-element bg-amber-300/40">
-  <CardHeader />
-  <CardBody />
-  <CardFooter />
+<article class={`card card-element ${cardData.meta.color}`}>
+  <CardHeader cardData={cardData} />
+  <CardBody cardData={cardData} />
+  <CardFooter cardData={cardData} />
 </article>
 

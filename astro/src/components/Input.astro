@@ -6,5 +6,5 @@ const { name, type, placeholder, isRequired = false, classList = [] } = Astro.pr
   class="form-inout" class:list={classList}
   name={name}
   type={type} placeholder={placeholder}
-  required={isRequired}
+  {...(isRequired ? { required: true } : {})}
 />

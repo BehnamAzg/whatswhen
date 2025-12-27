@@ -7,16 +7,12 @@
   "scope": "/",
   "display": "standalone",
   "theme_color": "#e5e5e5",
-	"background_color": "#e5e5e5",
-  "categories": [
-    "schedule",
-    "planner",
-    "productivity"
-  ],
+  "background_color": "#e5e5e5",
+  "categories": ["schedule", "planner", "productivity"],
   "icons": [
     {
       "src": "/icons/icon.svg",
-      "sizes": "any",
+      "sizes": "256x256",
       "type": "image/svg+xml",
       "purpose": "any"
     },
@@ -30,19 +26,19 @@
   "screenshots": [
     {
       "src": "/screenshots/screenshot-1.png",
-      "sizes": "???",
+      "sizes": "374x687",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
       "src": "/screenshots/screenshot-2.png",
-      "sizes": "???",
+      "sizes": "340x538",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
       "src": "/screenshots/screenshot-2.png",
-      "sizes": "???",
+      "sizes": "340x538",
       "type": "image/png",
       "form_factor": "narrow"
     }

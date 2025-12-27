@@ -1,10 +1,13 @@
 ---
+import cardsData from "../scripts/data.js";
 import Card from "./Card.astro";
 ---
 
-<main class="w-full min-h-0 flex-1 mt-4">
+<main class="w-full min-h-0 flex-1 my-2">
   <section id="cardsContainer" class="card-container relative flex-center flex-col w-full h-full overflow-hidden">
-    <Card />
+    <Card cardData={cardsData[0]} />
+    <Card cardData={cardsData[1]} />
+    <Card cardData={cardsData[1]} />
   </section>
 </main>
 
@@ -13,3 +16,100 @@ import Card from "./Card.astro";
     perspective: 1000px;
   }
 </style>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>(".card-container .card");
+  let activeCard = 0;
+
+  function setupCards() {
+    cards.forEach((card, index) => {
+      card.style.top = "100%";
+      card.style.scale = "92%";
+    });
+
+    if (activeCard !== 0) {
+      const prev = cards[activeCard - 1];
+      prev.style.top = "0%";
+    }
+
+    const active = cards[activeCard];
+    active.style.top = "14.5%";
+    active.style.scale = "100%";
+
+    if (activeCard < cards.length - 1) {
+      const next = cards[activeCard + 1];
+      next.style.top = "86%";
+    }
+  }
+  setupCards();
+
+  // ───────────────────────────────────────────────────────────────────────────
+
+  function nextCard() {
+    if (activeCard < cards.length - 1) {
+      activeCard++;
+      setupCards();
+    }
+  }
+
+  function prevCard() {
+    if (activeCard > 0) {
+      activeCard--;
+      setupCards();
+    }
+  }
+
+  function isModalOpen() {
+    return document.querySelector("dialog[open]") !== null;
+  }
+
+  // ───────────────────────────────────────────────────────────────────────────
+
+  window.addEventListener("wheel", (e) => {
+    if (isModalOpen()) return;
+    if (e.deltaY > 0) {
+      nextCard();
+    } else if (e.deltaY < 0) {
+      prevCard();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (isModalOpen()) return;
+    switch (event.key) {
+      case "ArrowUp":
+      case "w":
+        prevCard();
+        break;
+      case "ArrowDown":
+      case "s":
+        nextCard();
+        break;
+    }
+  });
+
+  // ───────────────────────────────────────────────────────────────────────────
+
+  let startY = 0;
+  let threshold = 50;
+
+  window.addEventListener("touchstart", (e) => {
+    if (isModalOpen()) return;
+    startY = e.touches[0].clientY;
+  });
+
+  window.addEventListener("touchmove", (e) => {
+    if (isModalOpen()) return;
+    const currentY = e.touches[0].clientY;
+    const diff = currentY - startY;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff < 0) {
+        nextCard();
+      } else {
+        prevCard();
+      }
+      startY = currentY; // update after reacting
+    }
+  });
+</script>

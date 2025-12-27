@@ -20,12 +20,14 @@ import "../styles/global.css";
     </script>
   </head>
   <body class="w-screen h-screen min-h-0 flex-center bg-light font-albert font-bold">
-    <div class="w-[30%] h-full min-h-0 flex flex-col p-4 max-sm:w-full max-md:w-1/2 max-lg:w-1/2">
+    <div class="w-[30%] h-full min-h-0 flex flex-col px-4 py-3 max-sm:w-full max-md:w-1/2 max-lg:w-1/2">
       <slot />
     </div>
   </body>
 </html>
 
-<script type="module">
-  import "/src/scripts/buttonHandlers.js";
+<script type="module" is:inline>
+  import initButtonHandlers from "/src/scripts/buttonHandlers.js";
+  initButtonHandlers();
 </script>
+

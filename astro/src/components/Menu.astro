@@ -6,14 +6,14 @@ import IconDisplay from "./IconDisplay.astro";
 ---
 
 <div class="mt-4 font-medium w-full flex gap-2 text-neutral-800">
-  <div class="rounded-full h-10 px-4 w-full bg-white/50 border border-white flex-center ring-primary min-h-0 transition-colors duration-200 gap-x-2 focus-primary select-none">
+  <div class="rounded-full h-10 px-4 w-full bg-white/50 border border-white flex-center ring-primary min-h-0 transition-colors duration-200 gap-x-2 select-none">
     <h3>Theme</h3>
     <label class="cursor-pointer focus-within:ring-2 focus-within:ring-primary rounded-full text-xs text-neutral-500">
-      <input type="radio" name="theme" class="sr-only peer" data-role="once" checked />
+      <input type="radio" name="theme" class="sr-only peer" checked />
       <span class="day-select rounded-full"> Light </span>
     </label>
     <label class="cursor-pointer focus-within:ring-2 focus-within:ring-primary rounded-full text-xs text-neutral-500">
-      <input type="radio" name="theme" class="sr-only peer" data-role="once" />
+      <input type="radio" name="theme" class="sr-only peer" />
       <span class="day-select rounded-full"> Dark </span>
     </label>
   </div>
@@ -21,16 +21,9 @@ import IconDisplay from "./IconDisplay.astro";
 </div>
 
 <div class="mt-3 font-medium w-full flex flex-col gap-3 text-neutral-800">
-
   <div class="font-medium w-full flex gap-2">
     <CapsuleBtn svgIcon="download" svgSize="16" text="Install The App" classList={["w-full", "text-sm", "bg-primary", "text-white"]} />
   </div>
-
-  <!-- <Accordion svgIcon="download" svgSize="16" text="Download">
-    <p class="rounded-2xl my-2 px-4 py-2.5 w-full bg-white/50 border border-white">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem sapiente similique natus eos incidunt esse, maxime labore repellat officia nulla rerum nihil necessitatibus harum aperiam sit! Facere eaque voluptates tempore?
-    </p>
-  </Accordion> -->
 
   <Accordion svgIcon="info" svgSize="16" text="About WhatsWhen?">
     <p class="rounded-2xl my-2 px-4 py-2.5 w-full bg-white/50 border border-white">
@@ -55,8 +48,6 @@ import IconDisplay from "./IconDisplay.astro";
     </div>
   </Accordion>
 
-   
-
   <div class="font-medium w-full flex gap-2">
     <!-- <CircleBtn svgIcon="globe" svgSize="16" classList={["backdrop-blur-none"]} action="" /> -->
     <CapsuleBtn svgIcon="github" svgSize="14" text="Github" classList={["w-1/2", "text-sm"]} />
@@ -69,13 +60,18 @@ import IconDisplay from "./IconDisplay.astro";
   </div>
 
   <div class="font-medium w-full flex gap-2">
-    <button type="button" class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-500 w-full select-all" data-action="copyToClipboard">
+    <button id="version" type="button" class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-500 w-full select-text" data-action="copyToClipboard">
       <IconDisplay svgIcon="code" svgSize="14" />
-      <span>Version 1.0.0 - 2026-01-01</span>
+      <span>
+        Version 1.0.0 - 2026-01-01
+      </span>
+      <span id="copiedMessage" class="bg-primary rounded-full px-2 py-1 text-white absolute right-6  opacity-0 transition-opacity duration-300 select-none">Copied!</span>
     </button>
+    
   </div>
 
-  <a href="" target="_blank" class="my-1 rounded-2xl text-[10px] w-full text-center text-neutral-500 hover:underline cursor-pointer select-none">
-    &copy; 2026 WhatsWhen? - All Rights Reserved.
-  </a>
+  <a href="" target="_blank" class="my-1 rounded-2xl text-[10px] w-full text-center text-neutral-500 hover:underline cursor-pointer select-none focus-primary"> &copy; 2026 WhatsWhen? - All Rights Reserved. </a>
+
+  
 </div>
+

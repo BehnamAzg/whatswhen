@@ -3,6 +3,6 @@ const { value, isChecked = false, classList = [] } = Astro.props;
 ---
 
 <label class="focus-within:ring-2 focus-within:ring-primary rounded-full">
-  <input type="radio" name="color" value={value} class="sr-only peer" checked={isChecked} />
+  <input type="radio" name="color" value={value} class="sr-only peer" {...(isChecked ? { checked: true } : {})} />
   <span class="color-dot focus:outline-none" class:list={classList} tabindex="0"></span>
 </label>

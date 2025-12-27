@@ -2,7 +2,7 @@
 import PomodoroTimerInput from "./PomodoroTimerInput.astro";
 ---
 
-<template id="pomodoroTimerTemplate">
+<div id="pomodoroTimer" class="w-full h-full font-medium rounded-2xl bg-white/50 border border-white flex-col p-2 gap-2 text-neutral-800 hidden">
   <div class="flex-center w-full gap-2 text-base font-bold text-neutral-800">
     <PomodoroTimerInput value="25:00" />
     <PomodoroTimerInput value="05:00" />
@@ -19,4 +19,4 @@ import PomodoroTimerInput from "./PomodoroTimerInput.astro";
     <PomodoroTimerInput value="25:00" />
     <PomodoroTimerInput value="15:00" />
   </div>
-</template>
+</div>

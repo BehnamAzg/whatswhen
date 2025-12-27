@@ -1,12 +1,23 @@
+---
+const { cardData = {} } = Astro.props;
+
+const iso = cardData.startsAt;
+const time = new Date(iso).toLocaleTimeString('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true
+});
+---
+
 <div class="w-full h-[14.5%] max-sm:h-[13.5%] rounded-t-3xl flex-center justify-between py-2 select-none">
-  <span class="bg-white/40 rounded-full h-[6vh] aspect-square flex-center text-[3vh]">🌞</span>
+  <span class="bg-white/40 rounded-full h-[6vh] aspect-square flex-center text-[3vh]">{cardData.meta.icon}</span>
   <div class="flex flex-col justify-center h-fit">
-    <h1 class="text-lg w-52 truncate text-black" title="This is a long form title that will.">This is a long form title that will</h1>
-    <time class="text-sm text-black/30">09:30 AM</time>
+    <h1 class="text-lg w-52 truncate text-black" title={cardData.title}>{cardData.title}</h1>
+    <time class="text-sm text-black/30">{time}</time>
   </div>
-  <span class="rounded-full h-[6vh] aspect-square flex-center text-[5vh] text-white/50">02</span>
+  <span class="rounded-full h-[6vh] aspect-square flex-center text-[5vh] text-white/50">{cardData.id}</span>
 </div>
 
 <div class="w-full mt-2 max-sm:mt-3.5">
-  <span class="bg-white/40 rounded-full text-xs py-2 px-3">Morning Routine</span>
+  <span class="bg-white/40 rounded-full text-xs py-2 px-3">{cardData.meta.tag}</span>
 </div>
