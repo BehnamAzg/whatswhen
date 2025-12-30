@@ -3,12 +3,12 @@ import CardHeader from "./CardHeader.astro";
 import CardBody from "./CardBody.astro";
 import CardFooter from "./CardFooter.astro";
 
-const { cardData = {} } = Astro.props;
+// const { cardData = {} } = Astro.props;
 ---
 
-<article class={`card card-element ${cardData.meta.color}`}>
-  <CardHeader cardData={cardData} />
-  <CardBody cardData={cardData} />
-  <CardFooter cardData={cardData} />
+<article class="card card-element" data-card-color>
+  <CardHeader />
+  <CardBody />
+  <CardFooter />
 </article>
 

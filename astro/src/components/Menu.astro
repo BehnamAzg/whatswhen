@@ -60,14 +60,13 @@ import IconDisplay from "./IconDisplay.astro";
   </div>
 
   <div class="font-medium w-full flex gap-2">
-    <button id="version" type="button" class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-500 w-full select-text" data-action="copyToClipboard">
+    <button type="button" class="circle-btn shrink px-4 min-h-0 gap-x-1.5 backdrop-blur-none text-neutral-500 w-full select-text" data-action="copyToClipboard">
       <IconDisplay svgIcon="code" svgSize="14" />
-      <span>
+      <span id="version">
         Version 1.0.0 - 2026-01-01
       </span>
       <span id="copiedMessage" class="bg-primary rounded-full px-2 py-1 text-white absolute right-6  opacity-0 transition-opacity duration-300 select-none">Copied!</span>
     </button>
-    
   </div>
 
   <a href="" target="_blank" class="my-1 rounded-2xl text-[10px] w-full text-center text-neutral-500 hover:underline cursor-pointer select-none focus-primary"> &copy; 2026 WhatsWhen? - All Rights Reserved. </a>

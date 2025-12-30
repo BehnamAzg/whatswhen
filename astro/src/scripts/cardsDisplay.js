@@ -1,29 +1,48 @@
----
-import cardsData from "../scripts/data.js";
-import Card from "./Card.astro";
-import CardTemplate from "./CardTemplate.astro";
----
+import cardsData from "./data.js";
 
-<main class="w-full min-h-0 flex-1 my-2">
-  <section id="cardsContainer" class="card-container relative flex-center flex-col w-full h-full overflow-hidden">
-    <!-- <Card cardData={cardsData[0]} />
-    <Card cardData={cardsData[1]} />
-    <Card cardData={cardsData[1]} /> -->
-  </section>
-</main>
+export const updateCsrdsUI = () => {
+  const container = document.getElementById("cardsContainer");
+  const template = document.getElementById("cardTemplate");
+  const clone = template.content.cloneNode(true);
+  container.innerHTML = "";
 
-<CardTemplate />
+  cardsData.forEach((card, index) => {
+    const iso = card.startsAt;
+    const time = new Date(iso).toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    clone.querySelector("[data-card-color]").classList.add(card.color)
+    clone.querySelector("[data-card-icon]").textContent = card.meta.icon;
+    clone.querySelector("[data-card-title]").textContent = card.title;
+    clone.querySelector("[data-card-time]").textContent = time;
+    clone.querySelector("[data-card-id]").textContent = String(index + 1).padStart(2, "0");
+    card.todos.forEach((todo) => {
+      clone.querySelector("[data-card-tag]").insertAdjacentHTML(
+        "beforeend",
+        `
+          <li class="mb-2">
+            <label class="cursor-pointer inline-flex gap-2 items-start">
+              <input type="checkbox" class="hidden peer" ${todo.done ? { checked: true } : {}} />
+              <span class="todo-checkbox-large">
+                <IconDisplay svgIcon="check-todo" svgSize="12" />
+              </span>
+              <span class="todo-text" data-card-todo-text>${todo.text}</span>
+            </label>
+          </li>
+        `
+      );
+    });
+    clone.querySelector("[data-card-tag]").textContent = card.tag;
+    clone.querySelector("[data-card-description]").textContent = card.description;
+  });
 
-<style>
-  main {
-    perspective: 1000px;
-  }
-</style>
+  container.appendChild(clone);
 
-<!-- <script>
-  const cards = document.querySelectorAll<HTMLElement>(".card-container .card");
+  // style the cards
+  const cards = document.querySelectorAll(".card-container .card");
   let activeCard = 0;
-
   function setupCards() {
     cards.forEach((card, index) => {
       card.style.top = "100%";
@@ -65,8 +84,6 @@ import CardTemplate from "./CardTemplate.astro";
   function isModalOpen() {
     return document.querySelector("dialog[open]") !== null;
   }
-
-  // ───────────────────────────────────────────────────────────────────────────
 
   window.addEventListener("wheel", (e) => {
     if (isModalOpen()) return;
@@ -115,4 +132,4 @@ import CardTemplate from "./CardTemplate.astro";
       startY = currentY; // update after reacting
     }
   });
-</script> -->
+};

@@ -1,23 +1,21 @@
 ---
 import IconDisplay from "./IconDisplay.astro";
 
-interface Todo {
-  text: string;
-  done: boolean;
-}
+// interface Todo {
+//   text: string;
+//   done: boolean;
+// }
 
-const { cardData = {} } = Astro.props;
-const todos: Todo[] = cardData.todos || [];
+// const { cardData = {} } = Astro.props;
+// const todos: Todo[] = cardData.todos || [];
 ---
 
-<ul class="w-full h-full px-4 py-2.5 min-h-0 rounded-2xl bg-white/20 my-4 overflow-y-auto font-medium ">
+<ul class="w-full h-full px-4 py-2.5 min-h-0 rounded-2xl bg-white/20 my-4 overflow-y-auto font-medium" data-card-todo>
   <li class="mb-2">
-    <p>
-      {cardData.description}
-    </p>
+    <p data-card-description></p>
   </li>
 
-  {
+  <!-- {
     todos.map((todo: Todo) => (
       <li class="mb-2">
         <label class="cursor-pointer inline-flex gap-2 items-start">
@@ -25,9 +23,9 @@ const todos: Todo[] = cardData.todos || [];
           <span class="todo-checkbox-large">
             <IconDisplay svgIcon="check-todo" svgSize="12" />
           </span>
-          <span class="todo-text">{todo.text}</span>
+          <span class="todo-text" data-card-todo-text></span>
         </label>
       </li>
     ))
-  }
+  } -->
 </ul>

@@ -10,7 +10,7 @@ import Input from "./Input.astro";
 import RepeatLabel from "./RepeatLabel.astro";
 ---
 
-<form action="" id="createTaskForm" class="font-medium my-2 flex flex-col gap-3 focus:outline-none rounded-2xl" tabindex="-1">
+<form id="taskForm" class="font-medium my-2 flex flex-col gap-3 focus:outline-none rounded-2xl" tabindex="-1">
   <div class="w-full flex gap-2 items-stretch">
     <!-- icon -->
     <CircleBtn svgIcon="smiley" svgSize="22" classList={["text-xl", "text-neutral-500", "backdrop-blur-none"]} action="" />
@@ -63,7 +63,7 @@ import RepeatLabel from "./RepeatLabel.astro";
 
     <!-- Custom color picker -->
     <label class="focus-within:ring-2 focus-within:ring-primary rounded-full">
-      <input id="customColor" type="color" class="sr-only peer" value="#694cf1" />
+      <input id="customColor" name="customColor" type="color" class="sr-only peer" value="#694cf1" />
       <span id="customDot" class="color-dot bg-primary text-white flex items-center justify-center focus:outline-none" tabindex="0">
         <IconDisplay svgIcon="plus" svgSize="14" />
       </span>

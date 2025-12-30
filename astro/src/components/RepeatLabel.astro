@@ -3,6 +3,6 @@ const { text, role, value, isChecked = false } = Astro.props;
 ---
 
 <label class="cursor-pointer focus-within:ring-2 focus-within:ring-primary rounded-full">
-  <input type="checkbox" class="sr-only peer" data-role={role} {...(isChecked ? { checked: true } : {})} value={value} />
+  <input type="checkbox" name="repeat" class="sr-only peer" data-role={role} {...(isChecked ? { checked: true } : {})} value={value} />
   <span class="day-select"> {text} </span>
 </label>
